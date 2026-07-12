@@ -3,7 +3,7 @@
     "alias": "woocommerce",
     "description": "WooCommerce order sidebar for FreeScout (feibisi fork). Modern WC REST. Upstream: passatgt/viszt 1.0 (2020).",
     "version": "1.1.0-feibisi",
-    "detailsUrl": "https://feicode.com/freescout/freescout-woocommerce",
+    "detailsUrl": "https://feicode.com/freescout/WooCommerce",
     "author": "feibisi (fork of Peter Viszt)",
     "authorUrl": "https://feicode.com/freescout",
     "requiredAppVersion": "1.8.0",
@@ -19,5 +19,5 @@
         "start.php"
     ],
     "requires": [],
-    "latestVersionUrl": "https://feicode.com/freescout/freescout-woocommerce/raw/branch/main/module.json"
+    "latestVersionUrl": "https://feicode.com/freescout/WooCommerce/raw/branch/main/module.json"
 }
