@@ -61,7 +61,10 @@ class WooCommerceServiceProvider extends ServiceProvider
 									],
 									'wc_private_key' => [
 											'env' => 'WC_PRIVATE_KEY',
-									]
+									],
+									'wc_sidebar_secret' => [
+											'env' => 'WC_SIDEBAR_SECRET',
+									],
 							],
 					];
 				}
@@ -75,6 +78,7 @@ class WooCommerceServiceProvider extends ServiceProvider
 						'wc_domain'   => Option::get('wc_domain', \Config::get('app.wc_domain')),
 						'wc_public_key'   => Option::get('wc_public_key', \Config::get('app.wc_public_key')),
 						'wc_private_key'   => Option::get('wc_private_key', \Config::get('app.wc_private_key')),
+						'wc_sidebar_secret'   => Option::get('wc_sidebar_secret', ''),
 					];
 				}
 				return $settings;

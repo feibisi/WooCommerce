@@ -1,14 +1,14 @@
 {
     "name": "WooCommerce",
     "alias": "woocommerce",
-    "description": "WooCommerce order sidebar for FreeScout (feibisi fork). Modern WC REST. Upstream: passatgt/viszt 1.0 (2020).",
-    "version": "1.1.0-feibisi",
+    "description": "WooCommerce orders in conversation sidebar (feibisi fork). WC REST v3/v2, HPOS admin links, Sidebar Webhook HTML.",
+    "version": "1.2.0",
     "detailsUrl": "https://feicode.com/freescout/WooCommerce",
     "author": "feibisi (fork of Peter Viszt)",
     "authorUrl": "https://feicode.com/freescout",
     "requiredAppVersion": "1.8.0",
     "license": "AGPL-3.0",
-    "keywords": [],
+    "keywords": ["woocommerce", "orders", "sidebar"],
     "active": 0,
     "order": 0,
     "providers": [

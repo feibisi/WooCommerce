@@ -1,36 +1,42 @@
-# WooCommerce (feibisi fork)
+# FreeScout WooCommerce (feibisi)
 
-FreeScout 侧栏展示客户 WooCommerce 订单。
+侧栏按客户邮箱拉取商城订单。维护于 [feicode.com/freescout/WooCommerce](https://feicode.com/freescout/WooCommerce)。
 
-- **上游**: [passatgt/WooCommerce](https://github.com/passatgt/WooCommerce) (Peter Viszt, 2020, v1.0)
-- **维护**: feibisi / feicode.com `freescout` 组织
-- **安装目录名**: 必须为 `Modules/WooCommerce`
+## v1.2.0
 
-## 为何 fork
-
-1. 上游停更；官方 freescout.net 模块为付费闭源  
-2. 现代 WooCommerce REST（v3）与认证需适配  
-3. 与薇晓朵商城、joy 神州工单联动要可控
+- WC REST **v3 优先**，失败回退 v2
+- 先 `customers?email=` 再 `orders?customer=`（比单纯 search 准）
+- Basic Auth 传 Key（兼容部分网关）
+- 订单后台链接兼容 **HPOS**（`wc-orders&action=edit`）
+- 修复侧栏模板 `{link}` 未替换
+- **Sidebar Webhook** HTML：`/modules/woocommerce/sidebar-webhook?secret=…`
+- 设置项 `wc_sidebar_secret`
 
 ## 安装
 
+模块目录名必须是 `Modules/WooCommerce`。
+
 ```bash
-# 到 FreeScout 服务器
-cd /www/wwwroot/support.weixiaoduo.com/Modules
+cd /path/to/freescout/Modules
 git clone https://feicode.com/freescout/WooCommerce.git WooCommerce
-# 或 rsync 后 chown www:www
-php artisan freescout:module-install  # 若可用；否则后台 Modules 激活
+chown -R www-data:www-data WooCommerce   # 或 www:www
+php artisan freescout:module-install woocommerce
+php artisan freescout:module-laroute
 ```
 
-后台 **Settings → WooCommerce**：`https://mall.xxx/`（末尾 `/`）+ WC REST Consumer Key/Secret。
+**Settings → WooCommerce**：域名（末尾 `/`）+ Consumer Key/Secret。
 
-## 路线图
+## Sidebar Webhook
 
-- [ ] WC REST v3 优先、v2 回退  
-- [ ] Application Password / 更稳的鉴权  
-- [ ] 订单列表字段对齐现代 WC（支付方式、订阅）  
-- [ ] 与 joy 神州工单面板共享订单摘要 API  
+1. 启用模块 **Sidebar Webhook**
+2. 邮箱设置填：
 
-## License
+```text
+https://support.weixiaoduo.com/modules/woocommerce/sidebar-webhook?secret=YOUR_SECRET
+```
 
-沿用上游 AGPL-3.0（见 module.json）。
+3. Settings → WooCommerce 填相同 `Sidebar webhook secret`
+
+## Upstream
+
+[passatgt/freescout-woocommerce](https://github.com/passatgt/freescout-woocommerce) 1.0 (2020) AGPL-3.0

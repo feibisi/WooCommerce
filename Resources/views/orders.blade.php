@@ -13,7 +13,7 @@
 				<div class="panel-body">
 					<div class="sidebar-block-header2"><strong>{{ __("Recent orders") }}</strong> (<a data-toggle="collapse" href=".collapse-wc-orders">close</a>)</div>
 					<ul class="woocommerce-order-list sidebar-block-list" data-not-found="{{ __("Orders not found") }}"></ul>
-					<a href="#" class="woocommerce-order-list-reload"><i class="glyphicon glyphicon-refresh"></i> Refresh</a>
+					<a href="#" class="woocommerce-order-list-reload"><i class="glyphicon glyphicon-refresh"></i> {{ __("Refresh") }}</a>
 				</div>
 			</div>
 		</div>
@@ -22,12 +22,13 @@
 
 <script type="text/template" id="wc-order-item-template">
     <li>
-			<div class="woocommerce-order-list-row"><a target="_blank" href="{link}">{number}</a> <span>{total}</span></div>
+			<div class="woocommerce-order-list-row"><a target="_blank" rel="noopener" href="{link}">#{number}</a> <span>{total}</span></div>
 			<div class="woocommerce-order-list-row"><span>{date}</span> <span class="status">{status}</span></div>
+			<div class="woocommerce-order-list-row"><span class="text-muted">{payment}</span></div>
     </li>
 </script>
 
 @section('javascript')
     @parent
-    loadWooCommerceOrders('{{ $customer->getMainEmail() }}', '{{ $domain}}', '{{ $locale }}');
+    loadWooCommerceOrders(@json($customer->getMainEmail()), @json($domain), @json($locale));
 @endsection
