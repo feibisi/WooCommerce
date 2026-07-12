@@ -2,7 +2,7 @@
     "name": "WooCommerce",
     "alias": "woocommerce",
     "description": "WooCommerce orders sidebar (feibisi). WC REST v3/v2, HPOS, webhook at /woocommerce/sidebar-webhook",
-    "version": "1.2.1",
+    "version": "1.2.2",
     "detailsUrl": "https://feicode.com/freescout/WooCommerce",
     "author": "feibisi (fork of Peter Viszt)",
     "authorUrl": "https://feicode.com/freescout",

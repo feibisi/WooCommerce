@@ -79,26 +79,36 @@ class WooCommerceController extends Controller
      */
     public function sidebarWebhook(Request $request)
     {
+        // fulldecent/freescout-sidebar-webhook POSTs JSON:
+        // customerEmail, customerEmails[], secret, conversationId, ...
+        $payload = $request->all();
+        if ($request->getContent()) {
+            $json = json_decode($request->getContent(), true);
+            if (is_array($json)) {
+                $payload = array_merge($payload, $json);
+            }
+        }
+
         $secret = (string) Option::get('wc_sidebar_secret', '');
-        $given = (string) ($request->input('secret') ?: $request->header('X-WC-Sidebar-Secret', ''));
+        $given = (string) (
+            $payload['secret']
+            ?? $request->input('secret')
+            ?? $request->header('X-WC-Sidebar-Secret')
+            ?? ''
+        );
         if ($secret === '' || !hash_equals($secret, $given)) {
             return response('Forbidden', 403);
         }
 
         $email = trim((string) (
-            $request->input('email')
-            ?: $request->input('customer_email')
-            ?: data_get($request->all(), 'customer.email')
-            ?: ''
+            $payload['customerEmail']
+            ?? $payload['email']
+            ?? $payload['customer_email']
+            ?? data_get($payload, 'customer.email')
+            ?? ''
         ));
-        // Sidebar Webhook payloads vary; try JSON body fields
-        if ($email === '' && $request->isJson()) {
-            $email = trim((string) (
-                data_get($request->json()->all(), 'customer.emails.0')
-                ?: data_get($request->json()->all(), 'customer.email')
-                ?: data_get($request->json()->all(), 'email')
-                ?: ''
-            ));
+        if ($email === '' && !empty($payload['customerEmails'][0])) {
+            $email = trim((string) $payload['customerEmails'][0]);
         }
 
         if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
