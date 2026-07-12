@@ -9,7 +9,7 @@
 - Basic Auth 传 Key（兼容部分网关）
 - 订单后台链接兼容 **HPOS**（`wc-orders&action=edit`）
 - 修复侧栏模板 `{link}` 未替换
-- **Sidebar Webhook** HTML：`/modules/woocommerce/sidebar-webhook?secret=…`
+- **Sidebar Webhook** HTML：`/woocommerce/sidebar-webhook?secret=…`
 - 设置项 `wc_sidebar_secret`
 
 ## 安装
@@ -32,7 +32,7 @@ php artisan freescout:module-laroute
 2. 邮箱设置填：
 
 ```text
-https://support.weixiaoduo.com/modules/woocommerce/sidebar-webhook?secret=YOUR_SECRET
+https://support.weixiaoduo.com/woocommerce/sidebar-webhook?secret=YOUR_SECRET
 ```
 
 3. Settings → WooCommerce 填相同 `Sidebar webhook secret`

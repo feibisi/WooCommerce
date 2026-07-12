@@ -1,14 +1,18 @@
 {
     "name": "WooCommerce",
     "alias": "woocommerce",
-    "description": "WooCommerce orders in conversation sidebar (feibisi fork). WC REST v3/v2, HPOS admin links, Sidebar Webhook HTML.",
-    "version": "1.2.0",
+    "description": "WooCommerce orders sidebar (feibisi). WC REST v3/v2, HPOS, webhook at /woocommerce/sidebar-webhook",
+    "version": "1.2.1",
     "detailsUrl": "https://feicode.com/freescout/WooCommerce",
     "author": "feibisi (fork of Peter Viszt)",
     "authorUrl": "https://feicode.com/freescout",
     "requiredAppVersion": "1.8.0",
     "license": "AGPL-3.0",
-    "keywords": ["woocommerce", "orders", "sidebar"],
+    "keywords": [
+        "woocommerce",
+        "orders",
+        "sidebar"
+    ],
     "active": 0,
     "order": 0,
     "providers": [

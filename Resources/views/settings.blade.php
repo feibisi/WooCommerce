@@ -4,7 +4,7 @@
 <div class="descr-block">
 {{ __("Load order and customer information on the sidebar based on the customer's e-mail address. Generate API keys under WooCommerce → Settings → Advanced → REST API (Read permission). Prefer Application-style Consumer Key/Secret for modern WooCommerce.") }}
 <br>
-<small class="text-muted">feibisi fork · WC REST v3 first · Sidebar webhook: /modules/woocommerce/sidebar-webhook?secret=…</small>
+<small class="text-muted">feibisi fork · WC REST v3 first · Sidebar webhook: /woocommerce/sidebar-webhook?secret=…</small>
 </div>
 
     <div class="form-group{{ $errors->has('settings[wc_domain]') ? ' has-error' : '' }}">
@@ -37,7 +37,7 @@
         <div class="col-sm-6">
             <input id="wc_sidebar_secret" type="text" class="form-control input-sized" name="settings[wc_sidebar_secret]" value="{{ old('settings[wc_sidebar_secret]', $settings['wc_sidebar_secret'] ?? '') }}" maxlength="80">
             @include('partials/field_error', ['field'=>'settings.wc_sidebar_secret'])
-            <p class="form-help">{{ __('Optional. Used by Sidebar Webhook module URL: /modules/woocommerce/sidebar-webhook?secret=…') }}</p>
+            <p class="form-help">{{ __('Optional. Used by Sidebar Webhook module URL: /woocommerce/sidebar-webhook?secret=…') }}</p>
         </div>
     </div>
 
